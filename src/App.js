@@ -7,19 +7,19 @@ import PathList from "./components/paths/PathList";
 import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import CreateStone from "./components/stones/CreateStone";
-import StoneDetails from "./components/stones/StoneDetails";
+import Stone from "./components/stones/Stone";
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className="app">
         <Switch>
-          <Route path="/" exact component={Landing} />
+          <Route path="/landing" exact component={Landing} />
           <Route path="/signin" exact component={SignIn} />
           <Route path="/signup" exact component={SignUp} />
           <Route path="/paths" exact component={PathList} />
           <Route path="/stone/create" exact component={CreateStone} />
-          <Route path="/stone/:id" exact component={StoneDetails} />
+          <Route path="/paths/:pathid/stone/:stoneid" exact component={Stone} />
         </Switch>
       </div>
     </BrowserRouter>

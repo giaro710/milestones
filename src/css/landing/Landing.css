@@ -1,0 +1,15 @@
+.landing__container {
+  height: 100vh;
+}
+
+.landing__container--first {
+  background: rgb(196, 232, 245);
+}
+
+.landing__container--second {
+  background: rgba(246, 159, 159, 0.822);
+}
+
+.landing__container--third {
+  background: rgb(168, 243, 162);
+}
