@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../css/paths/pathlist.css";
 import HeaderStone from "../general/HeaderStone";
 import PathDetails from "./PathDetails";
 import { connect } from "react-redux";
+import { createPath } from "../../store/actions/index";
 
-const PathList = ({ paths }) => {
+const PathList = ({ paths, createPath }) => {
+  const [newPathTitle, setNewPathTitle] = useState("");
+
   const renderPaths = () => {
     return paths.map((path) => {
       return (
@@ -13,12 +16,32 @@ const PathList = ({ paths }) => {
     });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    createPath({
+      id: 9,
+      title: newPathTitle,
+      stones: [],
+    });
+  };
+
   return (
     <div className="pathlist">
       {/* Navbar */}
       <HeaderStone title="paths" />
 
-      <button>Add path</button>
+      <form onSubmit={handleSubmit}>
+        <div className="pathlist__field">
+          <label htmlFor="title">Title</label>
+          <input
+            type="text"
+            id="title"
+            className="pathlist__input"
+            onChange={(e) => setNewPathTitle(e.target.value)}
+          />
+        </div>
+        <input type="submit" />
+      </form>
 
       {renderPaths()}
     </div>
@@ -30,4 +53,4 @@ const mapStateToProps = (state) => {
   return { paths: state.paths.paths };
 };
 
-export default connect(mapStateToProps)(PathList);
+export default connect(mapStateToProps, { createPath })(PathList);

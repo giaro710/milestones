@@ -26,7 +26,7 @@ const CreateStone = (props) => {
 
       <form onSubmit={handleSubmit}>
         <div className="createStone__field">
-          <label htmlFor="title"></label>
+          <label htmlFor="title">Title</label>
           <input
             onChange={(e) => setTitle(e.target.value)}
             value={title}
@@ -39,7 +39,7 @@ const CreateStone = (props) => {
         </div>
 
         <div className="createStone__field">
-          <label htmlFor="content"></label>
+          <label htmlFor="content">Content</label>
           <textarea
             onChange={(e) => setContent(e.target.value)}
             value={content}
