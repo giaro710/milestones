@@ -8,6 +8,7 @@ import SignIn from "./components/auth/SignIn";
 import SignUp from "./components/auth/SignUp";
 import CreateStone from "./components/stones/CreateStone";
 import Stone from "./components/stones/Stone";
+import EditStone from "./components/stones/EditStone";
 
 const App = () => {
   return (
@@ -18,7 +19,16 @@ const App = () => {
           <Route path="/signin" exact component={SignIn} />
           <Route path="/signup" exact component={SignUp} />
           <Route path="/paths" exact component={PathList} />
-          <Route path="/stone/create" exact component={CreateStone} />
+          <Route
+            path="/paths/:pathid/stone/create"
+            exact
+            component={CreateStone}
+          />
+          <Route
+            path="/paths/:pathid/stone/:stoneid/edit"
+            exact
+            component={EditStone}
+          />
           <Route path="/paths/:pathid/stone/:stoneid" exact component={Stone} />
         </Switch>
       </div>

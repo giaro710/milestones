@@ -1,15 +1,13 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import "../../css/paths/createstone.css";
 
-const CreateStone = (props) => {
-  const [title, setTitle] = useState("");
-  const [content, setContent] = useState("");
+const EditStone = (props) => {
+  const [title, setTitle] = useState(`${props.stone.title}`);
+  const [content, setContent] = useState(`${props.stone.content}`);
 
   const pathId = props.match.params.pathid;
 
-  console.log(title);
-  console.log(pathId);
+  console.log(props);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -22,7 +20,7 @@ const CreateStone = (props) => {
 
   return (
     <div className="createStone">
-      <h1>Create Stone page</h1>
+      <h1>Edit Stone page</h1>
 
       <form onSubmit={handleSubmit}>
         <div className="createStone__field">
@@ -56,4 +54,10 @@ const CreateStone = (props) => {
   );
 };
 
-export default CreateStone;
+const mapStateToProps = (state, ownProps) => {
+  const path = state.paths.paths[ownProps.match.params.pathid - 1];
+  const stone = path.stones[ownProps.match.params.stoneid - 1];
+  return { stone };
+};
+
+export default connect(mapStateToProps)(EditStone);

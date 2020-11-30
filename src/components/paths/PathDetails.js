@@ -1,6 +1,7 @@
 import React from "react";
 import StoneSummary from "../stones/StoneSummary";
 import { Link } from "react-router-dom";
+import "../../css/paths/pathdetails.css";
 
 const PathDetails = ({ id, title, stones }) => {
   const renderStones = () => {
@@ -20,7 +21,9 @@ const PathDetails = ({ id, title, stones }) => {
         <div className="pathDetails__actions">
           <button>delete</button>
           <button>edit</button>
-          <button>add</button>
+          <Link to={`/paths/${id}/stone/create`} className="pathDetails__btn">
+            Add
+          </Link>
         </div>
       </div>
 

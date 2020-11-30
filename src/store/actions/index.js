@@ -4,3 +4,8 @@ const createPath = (path) => {
     payload: path,
   };
 };
+
+/*
+TODO:
+- Create actions for: createPath and createStone
+*/

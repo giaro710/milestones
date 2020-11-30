@@ -1,7 +1,10 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
-const Stone = ({ stone }) => {
+const Stone = ({ stone, match }) => {
+  const pathId = match.params.pathid;
+
   if (stone) {
     return (
       <div className="stone">
@@ -11,6 +14,7 @@ const Stone = ({ stone }) => {
         <div className="stone__content">
           <p>{stone.content}</p>
         </div>
+        <Link to={`/paths/${pathId}/stone/${stone.id}/edit`}>Edit</Link>
       </div>
     );
   } else {
